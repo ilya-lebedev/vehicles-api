@@ -1,6 +1,7 @@
 package com.udacity.vehicles.service;
 
 import com.udacity.vehicles.client.maps.MapsClient;
+import com.udacity.vehicles.client.prices.Price;
 import com.udacity.vehicles.client.prices.PriceClient;
 import com.udacity.vehicles.domain.Location;
 import com.udacity.vehicles.domain.car.Car;
@@ -8,6 +9,7 @@ import com.udacity.vehicles.domain.car.CarRepository;
 import java.util.List;
 import java.util.Optional;
 
+import feign.FeignException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -50,8 +52,12 @@ public class CarService {
 
         Car car = carOptional.get();
 
-        String price = priceClient.getPrice(car.getId());
-        car.setPrice(price);
+        try {
+            Price price = priceClient.getPrice(car.getId());
+            car.setPrice(price.getCurrency() + " " + price.getPrice());
+        } catch (FeignException e) {
+            car.setPrice("(consult price)");
+        }
 
         Location location = mapsClient.getAddress(car.getLocation());
         car.setLocation(location);
