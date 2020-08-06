@@ -22,12 +22,10 @@ import com.udacity.vehicles.domain.manufacturer.Manufacturer;
 import com.udacity.vehicles.service.CarService;
 
 import java.net.URI;
-import java.util.Arrays;
 import java.util.Collections;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.json.AutoConfigureJsonTesters;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -89,13 +87,12 @@ public class CarControllerTest {
      */
     @Test
     public void listCars() throws Exception {
-        Mockito.when(carService.list()).thenReturn(Arrays.asList(getCar(), getCar()));
 
         mvc.perform(
                 get(new URI("/cars")))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(jsonPath("$._embedded.carList", hasSize(2)));
+                .andExpect(jsonPath("$._embedded.carList", hasSize(1)));
 
         verify(carService, times(1)).list();
     }
@@ -106,7 +103,6 @@ public class CarControllerTest {
      */
     @Test
     public void findCar() throws Exception {
-        Mockito.when(carService.findById(1L)).thenReturn(getCar());
 
         mvc.perform(
                 get("/cars/1"))
