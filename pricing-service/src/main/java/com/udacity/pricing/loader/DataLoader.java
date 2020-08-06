@@ -25,7 +25,7 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        LongStream.range(0, 100).forEach(i -> {
+        LongStream.range(1, 100).forEach(i -> {
             priceRepository.save(new Price("USD", randomPrice(), i));
         });
     }
