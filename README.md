@@ -1,6 +1,9 @@
 # Vehicles API
 
-Project repository for JavaND Project 2, where students implement a Vehicles API using Java and Spring Boot that can communicate with separate location and pricing services.
+This is my project from "Spring Boot Basic" course of "Java Web Developer Nanodegree Program" in Udacity.
+
+In this project I implemented a Vehicles API using Java and Spring Boot
+that can communicate with separate location and pricing services.
 
 ## Instructions
 
@@ -9,6 +12,7 @@ should be running at once for full operation. Further instructions are available
 
 - [Vehicles API](vehicles-api/README.md)
 - [Pricing Service](pricing-service/README.md)
+- [Eureka Service](eureka/README.md)
 - [Boogle Maps](boogle-maps/README.md)
 
 ## Dependencies
