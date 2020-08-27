@@ -1,6 +1,6 @@
 # Vehicles API
 
-This is my project from "Spring Boot Basic" course of "Java Web Developer Nanodegree Program" in Udacity.
+This is my project from "Web Services and APIs" course of "Java Web Developer Nanodegree Program" in Udacity.
 
 In this project I implemented a Vehicles API using Java and Spring Boot
 that can communicate with separate location and pricing services.
